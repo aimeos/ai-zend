@@ -79,6 +79,7 @@ class MW_Config_Zend
 	 */
 	public function set( $path, $value )
 	{
+		$classname = 'Zend_Config';
 		$parts = explode( '/', trim( $path, '/' ) );
 
 		$config = $this->_config;
@@ -88,7 +89,7 @@ class MW_Config_Zend
 		{
 			$val = $config->get( $parts[$i] );
 
-			if( $val instanceof Zend_Config ) {
+			if( $val instanceof $classname ) {
 				$config = $val;
 			} else {
 				$config = $config->{$parts[$i]} = new Zend_Config( array(), true );
@@ -108,9 +109,11 @@ class MW_Config_Zend
 	 */
 	protected function _get( Zend_Config $config, array $parts )
 	{
+		$classname = 'Zend_Config';
+
 		if( ( $key = array_shift( $parts ) ) !== null && isset( $config->$key ) )
 		{
-			if( $config->$key instanceof Zend_Config )
+			if( $config->$key instanceof $classname )
 			{
 				if( count( $parts  ) > 0 ) {
 					return $this->_get( $config->$key, $parts );

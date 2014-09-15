@@ -2,7 +2,7 @@
 
 /**
  * @copyright Copyright (c) Metaways Infosystems GmbH, 2013
- * @license LGPLv3, http://www.gnu.org/licenses/lgpl.html
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  */
 
 
@@ -28,6 +28,7 @@ class MW_Mail_ZendTest extends MW_Unittest_Testcase
 		$this->_object = new MW_Mail_Zend( $this->_mock );
 	}
 
+
 	/**
 	 * Tears down the fixture, for example, closes a network connection.
 	 * This method is called after a test is executed.
@@ -52,5 +53,4 @@ class MW_Mail_ZendTest extends MW_Unittest_Testcase
 
 		$this->_object->send( $this->_object->createMessage() );
 	}
-
 }

@@ -4,7 +4,7 @@
  * Test class for MW_Translation_ZendTest.
  *
  * @copyright Copyright (c) Metaways Infosystems GmbH, 2011
- * @license LGPLv3, http://www.gnu.org/licenses/lgpl.html
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  */
 class MW_Translation_ZendTest extends MW_Unittest_Testcase
 {
@@ -12,19 +12,6 @@ class MW_Translation_ZendTest extends MW_Unittest_Testcase
 	 * @var MW_Translation_Zend
 	 */
 	private $_object;
-
-
-	/**
-	 * Runs the test methods of this class.
-	 *
-	 * @access public
-	 * @static
-	 */
-	public static function main()
-	{
-		$suite  = new PHPUnit_Framework_TestSuite('MW_Translation_Zend');
-		$result = PHPUnit_TextUI_TestRunner::run($suite);
-	}
 
 
 	/**

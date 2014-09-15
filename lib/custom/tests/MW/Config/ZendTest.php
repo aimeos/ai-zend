@@ -4,27 +4,12 @@
  * Test class for MW_Config_Zend.
  *
  * @copyright Copyright (c) Metaways Infosystems GmbH, 2011
- * @license LGPLv3, http://www.gnu.org/licenses/lgpl.html
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  */
 class MW_Config_ZendTest extends MW_Unittest_Testcase
 {
-	/**
-	 * @var    MW_Config_Zend
-	 * @access protected
-	 */
 	private $_object;
 
-	/**
-	 * Runs the test methods of this class.
-	 *
-	 * @access public
-	 * @static
-	 */
-	public static function main()
-	{
-		$suite  = new PHPUnit_Framework_TestSuite('MW_Config_ZendTest');
-		$result = PHPUnit_TextUI_TestRunner::run($suite);
-	}
 
 	/**
 	 * Sets up the fixture, for example, opens a network connection.
@@ -45,6 +30,7 @@ class MW_Config_ZendTest extends MW_Unittest_Testcase
 		$this->_object = new MW_Config_Zend( $conf, array( $dir, $dir2 ) );
 	}
 
+
 	/**
 	 * Tears down the fixture, for example, closes a network connection.
 	 * This method is called after a test is executed.
@@ -54,6 +40,7 @@ class MW_Config_ZendTest extends MW_Unittest_Testcase
 	protected function tearDown()
 	{
 	}
+
 
 	public function testGet()
 	{
@@ -90,6 +77,7 @@ class MW_Config_ZendTest extends MW_Unittest_Testcase
 		$this->assertInternalType( 'array', $x );
 	}
 
+
 	public function testGetArray()
 	{
 		$this->assertEquals( array( 'host' => '127.0.0.1' ), $this->_object->get( 'resource/db/' ) );
@@ -112,10 +100,12 @@ class MW_Config_ZendTest extends MW_Unittest_Testcase
 		);
 	}
 
+
 	public function testGetDefault()
 	{
 		$this->assertEquals( 3306, $this->_object->get( 'resource/db/port', 3306 ) );
 	}
+
 
 	public function testSet()
 	{
@@ -128,6 +118,7 @@ class MW_Config_ZendTest extends MW_Unittest_Testcase
 		$this->_object->set( 'resource/bar/db', 'testdb' );
 		$this->assertEquals( 'testdb', $this->_object->get( 'resource/bar/db' ) );
 	}
+
 
 	public function testSetArray()
 	{

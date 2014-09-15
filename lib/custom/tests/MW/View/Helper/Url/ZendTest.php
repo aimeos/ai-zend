@@ -4,7 +4,7 @@
  * Test class for MW_View_Helper_Url_Zend.
  *
  * @copyright Copyright (c) Metaways Infosystems GmbH, 2013
- * @license LGPLv3, http://www.gnu.org/licenses/lgpl.html
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  */
 class MW_View_Helper_Url_ZendTest extends MW_Unittest_Testcase
 {

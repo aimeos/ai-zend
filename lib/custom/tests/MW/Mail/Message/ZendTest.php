@@ -2,7 +2,7 @@
 
 /**
  * @copyright Copyright (c) Metaways Infosystems GmbH, 2013
- * @license LGPLv3, http://www.gnu.org/licenses/lgpl.html
+ * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  */
 
 
@@ -27,6 +27,7 @@ class MW_Mail_Message_ZendTest extends MW_Unittest_Testcase
 		$this->_mock = $this->getMockBuilder( 'Zend_Mail' )->disableOriginalConstructor()->getMock();
 		$this->_object = new MW_Mail_Message_Zend( $this->_mock );
 	}
+
 
 	/**
 	 * Tears down the fixture, for example, closes a network connection.
@@ -132,7 +133,7 @@ class MW_Mail_Message_ZendTest extends MW_Unittest_Testcase
 	public function testSetBodyHtml()
 	{
 		$result = $this->_object->setBodyHtml( 'test' );
-		$mail = $this->_object->getObject();
+		$this->_object->getObject();
 
 		$this->assertSame( $this->_object, $result );
 	}
@@ -155,13 +156,11 @@ class MW_Mail_Message_ZendTest extends MW_Unittest_Testcase
 
 	public function testEmbedAttachment()
 	{
-		$partMock = $this->getMockBuilder( 'Zend_Mime_Part' )->disableOriginalConstructor()->getMock();
-
 		$this->_mock->expects( $this->once() )->method( 'getBodyHtml' )
 			->will( $this->returnValue( new stdClass() ) );
 
 		$result = $this->_object->embedAttachment( 'test', 'text/plain', 'test.txt' );
-		$mail = $this->_object->getObject();
+		$this->_object->getObject();
 
 		$this->assertInternalType( 'string', $result );
 	}
