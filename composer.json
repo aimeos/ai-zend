@@ -1,0 +1,22 @@
+{
+	"name": "aimeos/ai-zend",
+	"description": "Aimeos extension for utilizing Zend Framework components",
+	"homepage": "http://aimeos.org",
+	"type": "arcavias-extension",
+	"license": "LGPL-3.0",
+	"support": {
+		"source": "https://github.com/Aimeos/ai-zend",
+		"issues": "https://github.com/Aimeos/ai-zend/issues"
+	},
+	"require": {
+		"arcavias/extension-installer": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"MW": "lib/custom/src"
+		},
+		"classmap": [
+			"lib/custom/src"
+		]
+	}
+}
