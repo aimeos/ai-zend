@@ -182,7 +182,7 @@ class MW_Mail_Message_Zend implements MW_Mail_Message_Interface
 	public function addAttachment( $data, $mimetype, $filename, $disposition = 'attachment' )
 	{
 		$enc = Zend_Mime::ENCODING_BASE64;
-		$part = $this->_object->createAttachment( $data, $mimetype, $disposition, $enc, $filename );
+		$this->_object->createAttachment( $data, $mimetype, $disposition, $enc, $filename );
 
 		return $this;
 	}
