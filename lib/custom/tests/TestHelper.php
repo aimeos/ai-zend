@@ -47,6 +47,12 @@ class TestHelper
 	}
 
 
+	/**
+	 * Creates a new context item.
+	 *
+	 * @param string $site
+	 * @return \MShop_Context_Item_Interface Context object
+	 */
 	private static function _createContext( $site )
 	{
 		$ctx = new MShop_Context_Item_Default();
