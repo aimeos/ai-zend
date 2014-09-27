@@ -50,7 +50,7 @@ class TestHelper
 	/**
 	 * Creates a new context item.
 	 *
-	 * @param string $site
+	 * @param string $site Unique site code
 	 * @return \MShop_Context_Item_Interface Context object
 	 */
 	private static function _createContext( $site )
