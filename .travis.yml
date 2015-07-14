@@ -15,4 +15,7 @@ before_script:
   - mv ../ai-zend ext/ai-zend
   - composer install || sleep 60 && composer install
 
-script: vendor/bin/phing -Ddir=ext/ai-zend -Dzenddir=`pwd`/../zendlib/library testext checkext
+script: vendor/bin/phing -Ddir=ext/ai-zend -Dzenddir=`pwd`/../zendlib/library coverageext checkext
+
+after_success:
+  - php vendor/bin/coveralls -c ext/ai-zend/.coveralls.yml
