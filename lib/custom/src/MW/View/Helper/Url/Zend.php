@@ -19,8 +19,8 @@ class MW_View_Helper_Url_Zend
 	extends MW_View_Helper_Abstract
 	implements MW_View_Helper_Interface
 {
-	private $_router;
-	private $_serverUrl;
+	private $router;
+	private $serverUrl;
 
 
 	/**
@@ -34,8 +34,8 @@ class MW_View_Helper_Url_Zend
 	{
 		parent::__construct( $view );
 
-		$this->_router = $router;
-		$this->_serverUrl = $serverUrl;
+		$this->router = $router;
+		$this->serverUrl = $serverUrl;
 	}
 
 
@@ -70,10 +70,10 @@ class MW_View_Helper_Url_Zend
 			$paramList['trailing'] = str_replace( '/', '_', join( '_', $trailing ) );
 		}
 
-		$url = $this->_router->assemble( $paramList, $target, true );
+		$url = $this->router->assemble( $paramList, $target, true );
 
 		if( isset( $config['absoluteUri'] ) ) {
-			$url = $this->_serverUrl . $url;
+			$url = $this->serverUrl . $url;
 		}
 
 		return $url;

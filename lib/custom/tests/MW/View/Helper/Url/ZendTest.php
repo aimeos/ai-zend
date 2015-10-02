@@ -11,8 +11,8 @@
  */
 class MW_View_Helper_Url_ZendTest extends MW_Unittest_Testcase
 {
-	private $_object;
-	private $_router;
+	private $object;
+	private $router;
 
 
 	/**
@@ -28,9 +28,9 @@ class MW_View_Helper_Url_ZendTest extends MW_Unittest_Testcase
 		}
 
 		$view = new MW_View_Default();
-		$this->_router = $this->getMock( 'Zend_Controller_Router_Rewrite' );
+		$this->router = $this->getMock( 'Zend_Controller_Router_Rewrite' );
 
-		$this->_object = new MW_View_Helper_Url_Zend( $view, $this->_router, 'https://localhost:80' );
+		$this->object = new MW_View_Helper_Url_Zend( $view, $this->router, 'https://localhost:80' );
 	}
 
 
@@ -42,54 +42,54 @@ class MW_View_Helper_Url_ZendTest extends MW_Unittest_Testcase
 	 */
 	protected function tearDown()
 	{
-		$this->_object = null;
-		$this->_router = null;
+		$this->object = null;
+		$this->router = null;
 	}
 
 
 	public function testTransform()
 	{
-		$this->_router->expects( $this->once() )->method( 'assemble' )
+		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( 'testurl' ) );
 
-		$this->assertEquals( 'testurl', $this->_object->transform() );
+		$this->assertEquals( 'testurl', $this->object->transform() );
 	}
 
 
 	public function testTransformSlashes()
 	{
-		$this->_router->expects( $this->once() )->method( 'assemble' )
+		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( 'testurl' ) );
 
-		$this->assertEquals( 'testurl', $this->_object->transform( null, null, null, array( 'test' => 'a/b' ) ) );
+		$this->assertEquals( 'testurl', $this->object->transform( null, null, null, array( 'test' => 'a/b' ) ) );
 	}
 
 
 	public function testTransformArrays()
 	{
-		$this->_router->expects( $this->once() )->method( 'assemble' )
+		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( 'testurl' ) );
 
-		$this->assertEquals( 'testurl', $this->_object->transform( null, null, null, array( 'test' => array( 'a', 'b' ) ) ) );
+		$this->assertEquals( 'testurl', $this->object->transform( null, null, null, array( 'test' => array( 'a', 'b' ) ) ) );
 	}
 
 
 	public function testTransformTrailing()
 	{
-		$this->_router->expects( $this->once() )->method( 'assemble' )
+		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( 'testurl' ) );
 
-		$this->assertEquals( 'testurl', $this->_object->transform( null, null, null, array(), array( 'a', 'b' ) ) );
+		$this->assertEquals( 'testurl', $this->object->transform( null, null, null, array(), array( 'a', 'b' ) ) );
 	}
 
 
 	public function testTransformAbsolute()
 	{
-		$this->_router->expects( $this->once() )->method( 'assemble' )
+		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( '/testurl' ) );
 
 		$options = array( 'absoluteUri' => true );
-		$result = $this->_object->transform( null, null, null, array(), array(), $options );
+		$result = $this->object->transform( null, null, null, array(), array(), $options );
 		$this->assertEquals( 'https://localhost:80/testurl', $result );
 	}
 }

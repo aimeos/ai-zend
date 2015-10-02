@@ -15,7 +15,7 @@ class MW_Translation_ZendTest extends MW_Unittest_Testcase
 	/**
 	 * @var MW_Translation_Zend
 	 */
-	private $_object;
+	private $object;
 
 
 	/**
@@ -32,13 +32,13 @@ class MW_Translation_ZendTest extends MW_Unittest_Testcase
 
 		$ds = DIRECTORY_SEPARATOR;
 
-		$this->_translationSources = array(
+		$this->translationSources = array(
 			'testDomain' => array( dirname(__FILE__) . $ds . 'testfiles' . $ds . 'case1' ),
 			'otherTestDomain' => array( dirname(__FILE__) . $ds . 'testfiles' . $ds . 'case2' ), // no file!
 			'thirdTestDomain' => array( dirname(__FILE__) . $ds . 'testfiles' . $ds . 'case3' ),
 		);
 
-		$this->_object = new MW_Translation_Zend( $this->_translationSources, 'csv', 'ru_ZD' );
+		$this->object = new MW_Translation_Zend( $this->translationSources, 'csv', 'ru_ZD' );
 	}
 
 
@@ -50,16 +50,16 @@ class MW_Translation_ZendTest extends MW_Unittest_Testcase
 	 */
 	protected function tearDown()
 	{
-		$this->_object = null;
+		$this->object = null;
 	}
 
 
 	public function testDt()
 	{
-		$this->assertEquals( 'singular translation', $this->_object->dt( 'testDomain', 'File' ) );
-		$this->assertEquals( 'Test default return', $this->_object->dt( 'otherTestDomain', 'Test default return' ) );
+		$this->assertEquals( 'singular translation', $this->object->dt( 'testDomain', 'File' ) );
+		$this->assertEquals( 'Test default return', $this->object->dt( 'otherTestDomain', 'Test default return' ) );
 
-		$this->assertEquals( 'test', $this->_object->dt( 'invalidTestDomain', 'test' ) );
+		$this->assertEquals( 'test', $this->object->dt( 'invalidTestDomain', 'test' ) );
 	}
 
 
@@ -71,23 +71,23 @@ class MW_Translation_ZendTest extends MW_Unittest_Testcase
 		 * 1, if $n == 2..4, 22..24, 32..34, ...
 		 * 2, if $n == 5..20, 25..30, 35..40, .
 		 */
-		$this->assertEquals( 'plural 2 translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 0 ) );
-		$this->assertEquals( 'singular translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 1 ) );
-		$this->assertEquals( 'plural 1 translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 2 ) );
-		$this->assertEquals( 'plural 2 translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 5 ) );
+		$this->assertEquals( 'plural 2 translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 0 ) );
+		$this->assertEquals( 'singular translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 1 ) );
+		$this->assertEquals( 'plural 1 translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 2 ) );
+		$this->assertEquals( 'plural 2 translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 5 ) );
 
-		$this->assertEquals( 'plural 1 translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 22 ) );
-		$this->assertEquals( 'plural 2 translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 25 ) );
-		$this->assertEquals( 'singular translation', $this->_object->dn( 'otherTestDomain', 'File', 'Files', 31 ) );
+		$this->assertEquals( 'plural 1 translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 22 ) );
+		$this->assertEquals( 'plural 2 translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 25 ) );
+		$this->assertEquals( 'singular translation', $this->object->dn( 'otherTestDomain', 'File', 'Files', 31 ) );
 
-		$this->assertEquals( 'tests', $this->_object->dn( 'invalidTestDomain', 'test', 'tests', 2 ) );
+		$this->assertEquals( 'tests', $this->object->dn( 'invalidTestDomain', 'test', 'tests', 2 ) );
 	}
 
 
 	// test using the testfiles/case1/ka_GE file; lang: german
 	public function testAdapterGettext()
 	{
-		$object = new MW_Translation_Zend( $this->_translationSources, 'gettext', 'ka_GE', array('disableNotices'=>true) );
+		$object = new MW_Translation_Zend( $this->translationSources, 'gettext', 'ka_GE', array('disableNotices'=>true) );
 
 		$this->assertEquals( 'Aktualisierung', $object->dt( 'testDomain', 'Update' ) );
 

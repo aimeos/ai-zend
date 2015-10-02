@@ -17,8 +17,8 @@
  */
 class MW_Mail_Zend implements MW_Mail_Interface
 {
-	private $_object;
-	private $_transport;
+	private $object;
+	private $transport;
 
 
 	/**
@@ -29,8 +29,8 @@ class MW_Mail_Zend implements MW_Mail_Interface
 	 */
 	public function __construct( Zend_Mail $object, Zend_Mail_Transport_Abstract $transport = null )
 	{
-		$this->_object = $object;
-		$this->_transport = $transport;
+		$this->object = $object;
+		$this->transport = $transport;
 	}
 
 
@@ -42,7 +42,7 @@ class MW_Mail_Zend implements MW_Mail_Interface
 	 */
 	public function createMessage( $charset = 'UTF-8' )
 	{
-		return new MW_Mail_Message_Zend( clone $this->_object );
+		return new MW_Mail_Message_Zend( clone $this->object );
 	}
 
 
@@ -53,7 +53,7 @@ class MW_Mail_Zend implements MW_Mail_Interface
 	 */
 	public function send( MW_Mail_Message_Interface $message )
 	{
-		$message->getObject()->send( $this->_transport );
+		$message->getObject()->send( $this->transport );
 	}
 
 
@@ -62,7 +62,7 @@ class MW_Mail_Zend implements MW_Mail_Interface
 	 */
 	public function __clone()
 	{
-		$this->_object = clone $this->_object;
-		$this->_transport = ( isset( $this->_transport ) ? clone $this->_transport : null );
+		$this->object = clone $this->object;
+		$this->transport = ( isset( $this->transport ) ? clone $this->transport : null );
 	}
 }

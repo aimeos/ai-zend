@@ -19,8 +19,8 @@ class MW_Config_Zend
 	extends MW_Config_Abstract
 	implements MW_Config_Interface
 {
-	private $_config;
-	private $_paths;
+	private $config;
+	private $paths;
 
 
 	/**
@@ -31,8 +31,8 @@ class MW_Config_Zend
 	 */
 	public function __construct( Zend_Config $config, $path = array() )
 	{
-		$this->_config = $config;
-		$this->_paths = (array) $path;
+		$this->config = $config;
+		$this->paths = (array) $path;
 	}
 
 
@@ -41,7 +41,7 @@ class MW_Config_Zend
 	 */
 	public function __clone()
 	{
-		$this->_config = clone $this->_config;
+		$this->config = clone $this->config;
 	}
 
 
@@ -56,15 +56,15 @@ class MW_Config_Zend
 	{
 		$parts = explode( '/', trim( $path, '/' ) );
 
-		if( ( $value = $this->_get( $this->_config, $parts ) ) !== null ) {
+		if( ( $value = $this->getPart( $this->config, $parts ) ) !== null ) {
 			return $value;
 		}
 
-		foreach( $this->_paths as $fspath ) {
-			$this->_load( $this->_config, $fspath, $parts );
+		foreach( $this->paths as $fspath ) {
+			$this->load( $this->config, $fspath, $parts );
 		}
 
-		if( ( $value = $this->_get( $this->_config, $parts ) ) !== null ) {
+		if( ( $value = $this->getPart( $this->config, $parts ) ) !== null ) {
 			return $value;
 		}
 
@@ -83,7 +83,7 @@ class MW_Config_Zend
 		$classname = 'Zend_Config';
 		$parts = explode( '/', trim( $path, '/' ) );
 
-		$config = $this->_config;
+		$config = $this->config;
 		$max = count( $parts ) - 1;
 
 		for( $i = 0; $i < $max; $i++ )
@@ -108,7 +108,7 @@ class MW_Config_Zend
 	 * @param array $parts List of config name parts to look for
 	 * @return mixed Found value or null if no value is available
 	 */
-	protected function _get( Zend_Config $config, array $parts )
+	protected function getPart( Zend_Config $config, array $parts )
 	{
 		$classname = 'Zend_Config';
 
@@ -117,7 +117,7 @@ class MW_Config_Zend
 			if( $config->$key instanceof $classname )
 			{
 				if( count( $parts  ) > 0 ) {
-					return $this->_get( $config->$key, $parts );
+					return $this->getPart( $config->$key, $parts );
 				}
 
 				return $config->$key->toArray();
@@ -137,7 +137,7 @@ class MW_Config_Zend
 	 * @param string $path Path to the configuration directory
 	 * @param array $parts List of config name parts to look for
 	 */
-	protected function _load( Zend_Config $config, $path, array $parts )
+	protected function load( Zend_Config $config, $path, array $parts )
 	{
 		if( ( $key = array_shift( $parts ) ) !== null )
 		{
@@ -149,7 +149,7 @@ class MW_Config_Zend
 					$config->$key = new Zend_Config( array(), true );
 				}
 
-				$this->_load( $config->$key, $newPath, $parts );
+				$this->load( $config->$key, $newPath, $parts );
 			}
 
 			if( file_exists( $newPath . '.php' ) )
@@ -158,7 +158,7 @@ class MW_Config_Zend
 					$config->$key = new Zend_Config( array(), true );
 				}
 
-				$config->$key->merge( new Zend_Config( $this->_include( $newPath . '.php' ), true ) );
+				$config->$key->merge( new Zend_Config( $this->includeFile( $newPath . '.php' ), true ) );
 			}
 		}
 	}
