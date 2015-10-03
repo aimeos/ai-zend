@@ -6,7 +6,7 @@
  * @copyright Aimeos (aimeos.org), 2014
  */
 
-class Perf_Config_ZendTest extends MW_Unittest_Testcase
+class Perf_Config_ZendTest extends PHPUnit_Framework_TestCase
 {
 	public function testZend()
 	{

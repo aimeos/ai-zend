@@ -7,7 +7,7 @@
  */
 
 
-class MW_Mail_ZendTest extends MW_Unittest_Testcase
+class MW_Mail_ZendTest extends PHPUnit_Framework_TestCase
 {
 	private $object;
 	private $mock;

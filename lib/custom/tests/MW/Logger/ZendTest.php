@@ -10,7 +10,7 @@
 /**
  * Test class for MW_Logger_Zend.
  */
-class MW_Logger_ZendTest extends MW_Unittest_Testcase
+class MW_Logger_ZendTest extends PHPUnit_Framework_TestCase
 {
 	private $object;
 
