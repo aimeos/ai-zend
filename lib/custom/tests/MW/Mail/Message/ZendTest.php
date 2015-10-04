@@ -246,7 +246,7 @@ class Test_Zend_Mail_Transport_Memory extends Zend_Mail_Transport_Abstract
 {
 	public $message;
 
-	protected function sendMail()
+	protected function _sendMail()
 	{
 		$this->message = $this->header . "\r\n" . $this->body;
 	}
