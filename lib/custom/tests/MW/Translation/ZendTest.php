@@ -10,7 +10,7 @@
 /**
  * Test class for MW_Translation_ZendTest.
  */
-class MW_Translation_ZendTest extends MW_Unittest_Testcase
+class MW_Translation_ZendTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * @var MW_Translation_Zend
