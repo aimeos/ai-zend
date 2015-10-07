@@ -7,10 +7,13 @@
  */
 
 
+namespace Aimeos\MW\Logger;
+
+
 /**
- * Test class for MW_Logger_Zend.
+ * Test class for \Aimeos\MW\Logger\Zend.
  */
-class MW_Logger_ZendTest extends PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit_Framework_TestCase
 {
 	private $object;
 
@@ -37,7 +40,7 @@ class MW_Logger_ZendTest extends PHPUnit_Framework_TestCase
 		$filter = new Zend_Log_Filter_Priority( Zend_Log::INFO );
 		$logger->addFilter( $filter );
 
-		$this->object = new MW_Logger_Zend( $logger );
+		$this->object = new \Aimeos\MW\Logger\Zend( $logger );
 	}
 
 
@@ -69,14 +72,14 @@ class MW_Logger_ZendTest extends PHPUnit_Framework_TestCase
 
 	public function testLogDebug()
 	{
-		$this->object->log( 'debug', MW_Logger_Abstract::DEBUG );
+		$this->object->log( 'debug', \Aimeos\MW\Logger\Base::DEBUG );
 		$this->assertEquals( '', file_get_contents( 'error.log' ) );
 	}
 
 
 	public function testBadPriority()
 	{
-		$this->setExpectedException('MW_Logger_Exception');
+		$this->setExpectedException('\\Aimeos\\MW\\Logger\\Exception');
 		$this->object->log( 'error', -1 );
 	}
 }

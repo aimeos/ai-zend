@@ -9,15 +9,18 @@
  */
 
 
+namespace Aimeos\MW\View\Helper\Url;
+
+
 /**
  * View helper class for building URLs using Zend Router.
  *
  * @package MW
  * @subpackage View
  */
-class MW_View_Helper_Url_Zend
-	extends MW_View_Helper_Abstract
-	implements MW_View_Helper_Interface
+class Zend
+	extends \Aimeos\MW\View\Helper\Base
+	implements \Aimeos\MW\View\Helper\Iface
 {
 	private $router;
 	private $serverUrl;
@@ -26,11 +29,11 @@ class MW_View_Helper_Url_Zend
 	/**
 	 * Initializes the URL view helper.
 	 *
-	 * @param MW_View_Interface $view View instance with registered view helpers
-	 * @param Zend_Controller_Router_Interface $router Zend Router implementation
+	 * @param \Aimeos\MW\View\Iface $view View instance with registered view helpers
+	 * @param Zend_\Aimeos\Controller\Router\Iface $router Zend Router implementation
 	 * @param string $serverUrl Url of the server including scheme, host and port
 	 */
-	public function __construct( $view, Zend_Controller_Router_Interface $router, $serverUrl )
+	public function __construct( $view, Zend_\Aimeos\Controller\Router\Iface $router, $serverUrl )
 	{
 		parent::__construct( $view );
 

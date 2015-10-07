@@ -6,10 +6,13 @@
  * @copyright Aimeos (aimeos.org), 2014
  */
 
+namespace Aimeos\MW\View\Helper\Url;
+
+
 /**
- * Test class for MW_View_Helper_Url_Zend.
+ * Test class for \Aimeos\MW\View\Helper\Url\Zend.
  */
-class MW_View_Helper_Url_ZendTest extends PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit_Framework_TestCase
 {
 	private $object;
 	private $router;
@@ -23,14 +26,14 @@ class MW_View_Helper_Url_ZendTest extends PHPUnit_Framework_TestCase
 	 */
 	protected function setUp()
 	{
-		if( !class_exists( 'Zend_Controller_Router_Rewrite' ) ) {
-			$this->markTestSkipped( 'Zend_Controller_Router_Rewrite is not available' );
+		if( !class_exists( 'Zend_\Aimeos\Controller\Router\Rewrite' ) ) {
+			$this->markTestSkipped( 'Zend_\Aimeos\Controller\Router\Rewrite is not available' );
 		}
 
-		$view = new MW_View_Default();
-		$this->router = $this->getMock( 'Zend_Controller_Router_Rewrite' );
+		$view = new \Aimeos\MW\View\Standard();
+		$this->router = $this->getMock( 'Zend_\Aimeos\Controller\Router\Rewrite' );
 
-		$this->object = new MW_View_Helper_Url_Zend( $view, $this->router, 'https://localhost:80' );
+		$this->object = new \Aimeos\MW\View\Helper\Url\Zend( $view, $this->router, 'https://localhost:80' );
 	}
 
 

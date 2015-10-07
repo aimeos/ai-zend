@@ -7,10 +7,13 @@
  */
 
 
+namespace Aimeos\MW\Config;
+
+
 /**
- * Test class for MW_Config_Zend.
+ * Test class for \Aimeos\MW\Config\Zend.
  */
-class MW_Config_ZendTest extends PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit_Framework_TestCase
 {
 	private $object;
 
@@ -31,7 +34,7 @@ class MW_Config_ZendTest extends PHPUnit_Framework_TestCase
 		$dir2 = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'testowrite';
 
 		$conf = new Zend_Config( array( 'resource' => array( 'db' => array( 'host' => '127.0.0.1' ) ) ), true );
-		$this->object = new MW_Config_Zend( $conf, array( $dir, $dir2 ) );
+		$this->object = new \Aimeos\MW\Config\Zend( $conf, array( $dir, $dir2 ) );
 	}
 
 
@@ -50,28 +53,28 @@ class MW_Config_ZendTest extends PHPUnit_Framework_TestCase
 	{
 		$this->assertEquals( '127.0.0.1', $this->object->get( 'resource/db/host' ) );
 
-		$x = $this->object->get( 'config/manager/default/select', 'defvalue1');
+		$x = $this->object->get( 'config/manager/standard/select', 'defvalue1');
 		$this->assertEquals( 'select11', $x );
 
 		$x = $this->object->get( 'config/provider/delivery/sh/select', 'defvalue2');
 		$this->assertEquals( 'select2', $x );
 
-		$x = $this->object->get( 'subconfig/default/subitem/a/aa', 'defvalue3');
+		$x = $this->object->get( 'subconfig/standard/subitem/a/aa', 'defvalue3');
 		$this->assertEquals( '111', $x );
 
-		$x = $this->object->get( 'subconfig/subsubconfig/default/subsubitem/aa/aaa', 'defvalue4');
+		$x = $this->object->get( 'subconfig/subsubconfig/standard/subsubitem/aa/aaa', 'defvalue4');
 		$this->assertEquals( '111', $x );
 
-		$x = $this->object->get( 'config/manager/default/select', 'defvalue5');
+		$x = $this->object->get( 'config/manager/standard/select', 'defvalue5');
 		$this->assertEquals( 'select11', $x );
 
-		$x = $this->object->get( 'subconfig/subsubconfig/default/subsubitem/aa/aaa', 'defvalue6');
+		$x = $this->object->get( 'subconfig/subsubconfig/standard/subsubitem/aa/aaa', 'defvalue6');
 		$this->assertEquals( '111', $x );
 
-		$x = $this->object->get( 'subconfig/default/subitem/a/aa', 'defvalue7');
+		$x = $this->object->get( 'subconfig/standard/subitem/a/aa', 'defvalue7');
 		$this->assertEquals( '111', $x );
 
-		$x = $this->object->get( 'subconfig/default/subitem/a/bb', 'defvalue8');
+		$x = $this->object->get( 'subconfig/standard/subitem/a/bb', 'defvalue8');
 		$this->assertEquals( 'defvalue8', $x );
 
 		$x = $this->object->get( 'nonsubconfig', 'defvalue9');

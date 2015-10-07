@@ -9,15 +9,18 @@
  */
 
 
+namespace Aimeos\MW\Config;
+
+
 /**
  * Configuration setting class using Zend_Config.
  *
  * @package MW
  * @subpackage Config
  */
-class MW_Config_Zend
-	extends MW_Config_Abstract
-	implements MW_Config_Interface
+class Zend
+	extends \Aimeos\MW\Config\Base
+	implements \Aimeos\MW\Config\Iface
 {
 	private $config;
 	private $paths;

@@ -9,13 +9,16 @@
  */
 
 
+namespace Aimeos\MW\Logger;
+
+
 /**
  * Log messages using Zend_Log.
  *
  * @package MW
  * @subpackage Logger
  */
-class MW_Logger_Zend extends MW_Logger_Abstract implements MW_Logger_Interface
+class Zend extends \Aimeos\MW\Logger\Base implements \Aimeos\MW\Logger\Iface
 {
 	private $logger = null;
 
@@ -37,10 +40,10 @@ class MW_Logger_Zend extends MW_Logger_Abstract implements MW_Logger_Interface
 	 * @param string $message Message text that should be written to the log facility
 	 * @param integer $priority Priority of the message for filtering
 	 * @param string $facility Facility for logging different types of messages (e.g. message, auth, user, changelog)
-	 * @throws MW_Logger_Exception If an error occurs in Zend_Log
-	 * @see MW_Logger_Abstract for available log level constants
+	 * @throws \Aimeos\MW\Logger\Exception If an error occurs in Zend_Log
+	 * @see \Aimeos\MW\Logger\Base for available log level constants
 	 */
-	public function log( $message, $priority = MW_Logger_Abstract::ERR, $facility = 'message' )
+	public function log( $message, $priority = \Aimeos\MW\Logger\Base::ERR, $facility = 'message' )
 	{
 		try
 		{
@@ -51,7 +54,7 @@ class MW_Logger_Zend extends MW_Logger_Abstract implements MW_Logger_Interface
 			$this->logger->log( '<' . $facility . '> ' . $message, $priority );
 		}
 		catch( Zend_Log_Exception $ze )	{
-			throw new MW_Logger_Exception( $ze->getMessage() );
+			throw new \Aimeos\MW\Logger\Exception( $ze->getMessage() );
 		}
 	}
 }

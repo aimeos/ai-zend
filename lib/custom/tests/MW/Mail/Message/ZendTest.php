@@ -1,13 +1,14 @@
 <?php
 
+namespace Aimeos\MW\Mail\Message;
+
+
 /**
  * @license LGPLv3, http://opensource.org/licenses/LGPL-3.0
  * @copyright Metaways Infosystems GmbH, 2013
  * @copyright Aimeos (aimeos.org), 2014
  */
-
-
-class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit_Framework_TestCase
 {
 	private $object;
 	private $mock;
@@ -26,7 +27,7 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 		}
 
 		$this->mock = $this->getMockBuilder( 'Zend_Mail' )->disableOriginalConstructor()->getMock();
-		$this->object = new MW_Mail_Message_Zend( $this->mock );
+		$this->object = new \Aimeos\MW\Mail\Message\Zend( $this->mock );
 	}
 
 
@@ -169,7 +170,7 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 
 	public function testEmbedAttachmentMultiple()
 	{
-		$object = new MW_Mail_Message_Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
 
 		$object->setBody( 'text body' );
 		$object->embedAttachment( 'test', 'text/plain', 'test.txt' );
@@ -191,7 +192,7 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 
 	public function testGenerateMailAlternative()
 	{
-		$object = new MW_Mail_Message_Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
 
 		$object->setBody( 'text body' );
 		$object->setBodyHtml( 'html body' );
@@ -206,7 +207,7 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 
 	public function testGenerateMailRelated()
 	{
-		$object = new MW_Mail_Message_Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
 
 		$object->embedAttachment( 'embedded-data', 'text/plain', 'embedded.txt' );
 		$object->setBodyHtml( 'html body' );
@@ -221,7 +222,7 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 
 	public function testGenerateMailFull()
 	{
-		$object = new MW_Mail_Message_Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
 
 		$object->addAttachment( 'attached-data', 'text/plain', 'attached.txt' );
 		$object->embedAttachment( 'embedded-data', 'text/plain', 'embedded.txt' );
@@ -238,11 +239,11 @@ class MW_Mail_Message_ZendTest extends PHPUnit_Framework_TestCase
 
 
 
-if( !class_exists( 'Zend_Mail_Transport_Abstract' ) ) {
+if( !class_exists( 'Zend_Mail_Transport_Base' ) ) {
 	return;
 }
 
-class Test_Zend_Mail_Transport_Memory extends Zend_Mail_Transport_Abstract
+class Test_Zend_Mail_Transport_Memory extends Zend_Mail_Transport_Base
 {
 	public $message;
 
