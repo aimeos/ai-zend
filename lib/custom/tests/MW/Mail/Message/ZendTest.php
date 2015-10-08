@@ -176,7 +176,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		$object->embedAttachment( 'test', 'text/plain', 'test.txt' );
 		$object->embedAttachment( 'test', 'text/plain', 'test.txt' );
 
-		$transport = new Test_Zend_Mail_Transport_Memory();
+		$transport = new TestMailTransport();
 		$object->getObject()->send( $transport );
 
 		$exp = '#Content-Disposition: inline; filename="test.txt".*Content-Disposition: inline; filename="1_test.txt"#smu';
@@ -197,7 +197,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		$object->setBody( 'text body' );
 		$object->setBodyHtml( 'html body' );
 
-		$transport = new Test_Zend_Mail_Transport_Memory();
+		$transport = new TestMailTransport();
 		$object->getObject()->send( $transport );
 
 		$exp = '#Content-Type: multipart/alternative;.*Content-Type: text/plain;.*Content-Type: text/html;#smu';
@@ -212,7 +212,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		$object->embedAttachment( 'embedded-data', 'text/plain', 'embedded.txt' );
 		$object->setBodyHtml( 'html body' );
 
-		$transport = new Test_Zend_Mail_Transport_Memory();
+		$transport = new TestMailTransport();
 		$object->getObject()->send( $transport );
 
 		$exp = '#Content-Type: multipart/related.*Content-Type: text/html;.*Content-Type: text/plain#smu';
@@ -229,7 +229,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		$object->setBodyHtml( 'html body' );
 		$object->setBody( 'text body' );
 
-		$transport = new Test_Zend_Mail_Transport_Memory();
+		$transport = new TestMailTransport();
 		$object->getObject()->send( $transport );
 
 		$exp = '#Content-Type: multipart/mixed;.*Content-Type: multipart/alternative;.*Content-Type: text/plain;.*Content-Type: multipart/related.*Content-Type: text/html;.*Content-Type: text/plain.*Content-Type: text/plain#smu';
@@ -243,7 +243,7 @@ if( !class_exists( 'Zend_Mail_Transport_Base' ) ) {
 	return;
 }
 
-class Test_Zend_Mail_Transport_Memory extends \Zend_Mail_Transport_Base
+class TestMailTransport extends \Zend_Mail_Transport_Base
 {
 	public $message;
 
