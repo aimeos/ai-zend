@@ -147,7 +147,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 		$this->mock->expects( $this->once() )->method( 'createAttachment' )
 			->with( $this->stringContains( 'test' ), $this->stringContains( 'text/plain' ),
-				$this->stringContains( 'inline' ), $this->stringContains( Zend_Mime::ENCODING_BASE64 ),
+				$this->stringContains( 'inline' ), $this->stringContains( \Zend_Mime::ENCODING_BASE64 ),
 				$this->stringContains( 'test.txt' ) )
 			->will( $this->returnValue( $partMock ) );
 
@@ -170,7 +170,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 	public function testEmbedAttachmentMultiple()
 	{
-		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new \Zend_Mail() );
 
 		$object->setBody( 'text body' );
 		$object->embedAttachment( 'test', 'text/plain', 'test.txt' );
@@ -192,7 +192,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 	public function testGenerateMailAlternative()
 	{
-		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new \Zend_Mail() );
 
 		$object->setBody( 'text body' );
 		$object->setBodyHtml( 'html body' );
@@ -207,7 +207,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 	public function testGenerateMailRelated()
 	{
-		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new \Zend_Mail() );
 
 		$object->embedAttachment( 'embedded-data', 'text/plain', 'embedded.txt' );
 		$object->setBodyHtml( 'html body' );
@@ -222,7 +222,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 	public function testGenerateMailFull()
 	{
-		$object = new \Aimeos\MW\Mail\Message\Zend( new Zend_Mail() );
+		$object = new \Aimeos\MW\Mail\Message\Zend( new \Zend_Mail() );
 
 		$object->addAttachment( 'attached-data', 'text/plain', 'attached.txt' );
 		$object->embedAttachment( 'embedded-data', 'text/plain', 'embedded.txt' );
@@ -243,7 +243,7 @@ if( !class_exists( 'Zend_Mail_Transport_Base' ) ) {
 	return;
 }
 
-class Test_Zend_Mail_Transport_Memory extends Zend_Mail_Transport_Base
+class Test_Zend_Mail_Transport_Memory extends \Zend_Mail_Transport_Base
 {
 	public $message;
 

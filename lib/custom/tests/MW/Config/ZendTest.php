@@ -27,13 +27,13 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		if( class_exists( 'Zend_Config' ) === false ) {
-			$this->markTestSkipped( 'Class Zend_Config not found' );
+			$this->markTestSkipped( 'Class \Zend_Config not found' );
 		}
 
 		$dir = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'testfiles';
 		$dir2 = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'testowrite';
 
-		$conf = new Zend_Config( array( 'resource' => array( 'db' => array( 'host' => '127.0.0.1' ) ) ), true );
+		$conf = new \Zend_Config( array( 'resource' => array( 'db' => array( 'host' => '127.0.0.1' ) ) ), true );
 		$this->object = new \Aimeos\MW\Config\Zend( $conf, array( $dir, $dir2 ) );
 	}
 

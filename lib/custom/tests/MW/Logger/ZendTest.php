@@ -27,17 +27,17 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		if( class_exists( 'Zend_Log' ) === false ) {
-			$this->markTestSkipped( 'Class Zend_Log not found' );
+			$this->markTestSkipped( 'Class \Zend_Log not found' );
 		}
 
-		$writer = new Zend_Log_Writer_Stream( 'error.log' );
+		$writer = new \Zend_Log_Writer_Stream( 'error.log' );
 
-		$formatter = new Zend_Log_Formatter_Simple( 'log: %message%' . PHP_EOL );
+		$formatter = new \Zend_Log_Formatter_Simple( 'log: %message%' . PHP_EOL );
 		$writer->setFormatter( $formatter );
 
-		$logger = new Zend_Log( $writer );
+		$logger = new \Zend_Log( $writer );
 
-		$filter = new Zend_Log_Filter_Priority( Zend_Log::INFO );
+		$filter = new \Zend_Log_Filter_Priority( \Zend_Log::INFO );
 		$logger->addFilter( $filter );
 
 		$this->object = new \Aimeos\MW\Logger\Zend( $logger );

@@ -13,7 +13,7 @@ namespace Aimeos\MW\Config;
 
 
 /**
- * Configuration setting class using Zend_Config.
+ * Configuration setting class using \Zend_Config.
  *
  * @package MW
  * @subpackage Config
@@ -27,12 +27,12 @@ class Zend
 
 
 	/**
-	 * Initialize config object with Zend_Config instance.
+	 * Initialize config object with \Zend_Config instance.
 	 *
-	 * @param Zend_Config $config Configuration object
+	 * @param \Zend_Config $config Configuration object
 	 * @param array|string $path Filesystem path or list of paths to the configuration files
 	 */
-	public function __construct( Zend_Config $config, $path = array() )
+	public function __construct( \Zend_Config $config, $path = array() )
 	{
 		$this->config = $config;
 		$this->paths = (array) $path;
@@ -96,7 +96,7 @@ class Zend
 			if( $val instanceof $classname ) {
 				$config = $val;
 			} else {
-				$config = $config->{$parts[$i]} = new Zend_Config( array(), true );
+				$config = $config->{$parts[$i]} = new \Zend_Config( array(), true );
 			}
 		}
 
@@ -107,11 +107,11 @@ class Zend
 	/**
 	 * Descents into the configuration specified by the given path and returns the value if found.
 	 *
-	 * @param Zend_Config $config Configuration object which should contain the loaded configuration
+	 * @param \Zend_Config $config Configuration object which should contain the loaded configuration
 	 * @param array $parts List of config name parts to look for
 	 * @return mixed Found value or null if no value is available
 	 */
-	protected function getPart( Zend_Config $config, array $parts )
+	protected function getPart( \Zend_Config $config, array $parts )
 	{
 		$classname = 'Zend_Config';
 
@@ -136,11 +136,11 @@ class Zend
 	/**
 	 * Loads the configuration files when found.
 	 *
-	 * @param Zend_Config $config Configuration object which should contain the loaded configuration
+	 * @param \Zend_Config $config Configuration object which should contain the loaded configuration
 	 * @param string $path Path to the configuration directory
 	 * @param array $parts List of config name parts to look for
 	 */
-	protected function load( Zend_Config $config, $path, array $parts )
+	protected function load( \Zend_Config $config, $path, array $parts )
 	{
 		if( ( $key = array_shift( $parts ) ) !== null )
 		{
@@ -149,7 +149,7 @@ class Zend
 			if( is_dir( $newPath ) )
 			{
 				if( !isset( $config->$key ) ) {
-					$config->$key = new Zend_Config( array(), true );
+					$config->$key = new \Zend_Config( array(), true );
 				}
 
 				$this->load( $config->$key, $newPath, $parts );
@@ -158,10 +158,10 @@ class Zend
 			if( file_exists( $newPath . '.php' ) )
 			{
 				if( !isset( $config->$key ) ) {
-					$config->$key = new Zend_Config( array(), true );
+					$config->$key = new \Zend_Config( array(), true );
 				}
 
-				$config->$key->merge( new Zend_Config( $this->includeFile( $newPath . '.php' ), true ) );
+				$config->$key->merge( new \Zend_Config( $this->includeFile( $newPath . '.php' ), true ) );
 			}
 		}
 	}

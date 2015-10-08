@@ -28,9 +28,9 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 	/**
 	 * Initializes the message instance.
 	 *
-	 * @param Zend_Mail $object Zend mail object
+	 * @param \Zend_Mail $object Zend mail object
 	 */
-	public function __construct( Zend_Mail $object )
+	public function __construct( \Zend_Mail $object )
 	{
 		$this->object = $object;
 	}
@@ -184,7 +184,7 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 	 */
 	public function addAttachment( $data, $mimetype, $filename, $disposition = 'attachment' )
 	{
-		$enc = Zend_Mime::ENCODING_BASE64;
+		$enc = \Zend_Mime::ENCODING_BASE64;
 		$this->object->createAttachment( $data, $mimetype, $disposition, $enc, $filename );
 
 		return $this;
@@ -208,10 +208,10 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 			$newfile = ++$cnt . '_' . $filename;
 		}
 
-		$part = new Zend_Mime_Part( $data );
+		$part = new \Zend_Mime_Part( $data );
 
-		$part->disposition = Zend_Mime::DISPOSITION_INLINE;
-		$part->encoding = Zend_Mime::ENCODING_BASE64;
+		$part->disposition = \Zend_Mime::DISPOSITION_INLINE;
+		$part->encoding = \Zend_Mime::ENCODING_BASE64;
 		$part->filename = $newfile;
 		$part->type = $mimetype;
 		$part->id = md5( $newfile . mt_rand() );
@@ -225,7 +225,7 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 	/**
 	 * Returns the internal Zend mail object.
 	 *
-	 * @return Zend_Mail Zend mail object
+	 * @return \Zend_Mail Zend mail object
 	 */
 	public function getObject()
 	{
@@ -235,25 +235,25 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 
 			if( $this->html != null )
 			{
-				$part = new Zend_Mime_Part( $this->html );
+				$part = new \Zend_Mime_Part( $this->html );
 
 				$part->charset = $this->object->getCharset();
-				$part->encoding = Zend_Mime::ENCODING_QUOTEDPRINTABLE;
-				$part->disposition = Zend_Mime::DISPOSITION_INLINE;
-				$part->type = Zend_Mime::TYPE_HTML;
+				$part->encoding = \Zend_Mime::ENCODING_QUOTEDPRINTABLE;
+				$part->disposition = \Zend_Mime::DISPOSITION_INLINE;
+				$part->type = \Zend_Mime::TYPE_HTML;
 
 				$parts = array( $part );
 			}
 
-			$msg = new Zend_Mime_Message();
+			$msg = new \Zend_Mime_Message();
 			$msg->setParts( array_merge( $parts, $this->embedded ) );
 
 			// create html body (text and maybe embedded), modified afterwards to set it to multipart/related
 			$this->object->setBodyHtml( $msg->generateMessage() );
 
 			$related = $this->object->getBodyHtml();
-			$related->type = Zend_Mime::MULTIPART_RELATED;
-			$related->encoding = Zend_Mime::ENCODING_8BIT;
+			$related->type = \Zend_Mime::MULTIPART_RELATED;
+			$related->encoding = \Zend_Mime::ENCODING_8BIT;
 			$related->boundary = $msg->getMime()->boundary();
 			$related->disposition = null;
 			$related->charset = null;

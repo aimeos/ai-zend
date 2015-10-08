@@ -26,12 +26,12 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function setUp()
 	{
-		if( !class_exists( 'Zend_\Aimeos\Controller\Router\Rewrite' ) ) {
-			$this->markTestSkipped( 'Zend_\Aimeos\Controller\Router\Rewrite is not available' );
+		if( !class_exists( 'Zend_Controller_Router_Rewrite' ) ) {
+			$this->markTestSkipped( 'Zend_Controller_Router_Rewrite is not available' );
 		}
 
 		$view = new \Aimeos\MW\View\Standard();
-		$this->router = $this->getMock( 'Zend_\Aimeos\Controller\Router\Rewrite' );
+		$this->router = $this->getMock( 'Zend_Controller_Router_Rewrite' );
 
 		$this->object = new \Aimeos\MW\View\Helper\Url\Zend( $view, $this->router, 'https://localhost:80' );
 	}

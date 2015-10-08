@@ -27,10 +27,10 @@ class Zend implements \Aimeos\MW\Mail\Iface
 	/**
 	 * Initializes the instance of the class.
 	 *
-	 * @param Zend_Mail $object Zend mail object
-	 * @param Zend_Mail_Transport_Base|null $transport Mail transport object
+	 * @param \Zend_Mail $object Zend mail object
+	 * @param \Zend_Mail_Transport_Base|null $transport Mail transport object
 	 */
-	public function __construct( Zend_Mail $object, Zend_Mail_Transport_Base $transport = null )
+	public function __construct( \Zend_Mail $object, \Zend_Mail_Transport_Base $transport = null )
 	{
 		$this->object = $object;
 		$this->transport = $transport;

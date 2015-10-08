@@ -13,7 +13,7 @@ namespace Aimeos\MW\Translation;
 
 
 /**
- * Translation using Zend_Translate
+ * Translation using \Zend_Translate
  *
  * @package MW
  * @subpackage Translation
@@ -28,15 +28,15 @@ class Zend
 
 
 	/**
-	 * Initializes the translation object using Zend_Translate.
-	 * This implementation only accepts files as source for the Zend_Translate_Adapter.
+	 * Initializes the translation object using \Zend_Translate.
+	 * This implementation only accepts files as source for the \Zend_Translate_Adapter.
 	 *
 	 * @param array $translationSources Associative list of translation domains and lists of translation directories.
 	 * 	Translations from the first file aren't overwritten by the later ones
 	 * as key and the directory where the translation files are located as value.
 	 * @param string $adapter Name of the Zend translation adapter
 	 * @param string $locale ISO language name, like "en" or "en_US"
-	 * @param string $options Associative array containing additional options for Zend_Translate
+	 * @param string $options Associative array containing additional options for \Zend_Translate
 	 *
 	 * @link http://framework.zend.com/manual/1.11/en/zend.translate.adapter.html
 	 */
@@ -131,7 +131,7 @@ class Zend
 	 * Returns the initialized Zend translation object which contains the translations.
 	 *
 	 * @param string $domain Translation domain
-	 * @return array List of translation objects implementing Zend_Translate
+	 * @return array List of translation objects implementing \Zend_Translate
 	 * @throws \Aimeos\MW\Translation\Exception If initialization fails
 	 */
 	protected function getTranslations( $domain )
@@ -151,7 +151,7 @@ class Zend
 			foreach( $locations as $location )
 			{
 				$options['content'] = $location;
-				$this->translations[$domain][] = new Zend_Translate( $options );
+				$this->translations[$domain][] = new \Zend_Translate( $options );
 			}
 		}
 

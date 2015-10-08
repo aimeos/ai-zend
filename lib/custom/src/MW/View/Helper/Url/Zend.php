@@ -30,10 +30,10 @@ class Zend
 	 * Initializes the URL view helper.
 	 *
 	 * @param \Aimeos\MW\View\Iface $view View instance with registered view helpers
-	 * @param Zend_\Aimeos\Controller\Router\Iface $router Zend Router implementation
+	 * @param \Zend_Controller_Router_Interface $router Zend Router implementation
 	 * @param string $serverUrl Url of the server including scheme, host and port
 	 */
-	public function __construct( $view, Zend_\Aimeos\Controller\Router\Iface $router, $serverUrl )
+	public function __construct( $view, \Zend_Controller_Router_Interface $router, $serverUrl )
 	{
 		parent::__construct( $view );
 
