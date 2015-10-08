@@ -159,7 +159,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 	public function testEmbedAttachment()
 	{
 		$this->mock->expects( $this->once() )->method( 'getBodyHtml' )
-			->will( $this->returnValue( new stdClass() ) );
+			->will( $this->returnValue( new \stdClass() ) );
 
 		$result = $this->object->embedAttachment( 'test', 'text/plain', 'test.txt' );
 		$this->object->getObject();
