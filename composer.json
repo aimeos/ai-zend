@@ -12,11 +12,11 @@
 		"wiki": "https://aimeos.org/docs"
 	},
 	"require": {
-		"php": ">=5.2.0"
+		"php": ">=5.3.3"
 	},
 	"autoload": {
-		"psr-0": {
-			"MW": "lib/custom/src"
+		"psr-4": {
+			"Aimeos\\MW\\": "lib/custom/src/MW"
 		},
 		"classmap": [
 			"lib/custom/src"
