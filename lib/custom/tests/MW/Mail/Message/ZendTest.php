@@ -239,11 +239,11 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 
 
-if( !class_exists( 'Zend_Mail_Transport_Base' ) ) {
+if( !class_exists( '\Zend_Mail_Transport_Abstract' ) ) {
 	return;
 }
 
-class TestMailTransport extends \Zend_Mail_Transport_Base
+class TestMailTransport extends \Zend_Mail_Transport_Abstract
 {
 	public $message;
 

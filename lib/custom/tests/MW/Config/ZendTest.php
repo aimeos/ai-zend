@@ -102,7 +102,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 						),
 					),
 				),
-				$this->object->get( 'subconfig/default'
+				$this->object->get( 'subconfig/standard'
 			)
 		);
 	}

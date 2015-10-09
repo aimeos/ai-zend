@@ -2,7 +2,7 @@
 
 return array(
 	'manager' => array (
-		'default' => array(
+		'standard' => array(
 			'select' => 'select1',
 		),
 	),
