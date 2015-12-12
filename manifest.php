@@ -13,8 +13,4 @@ return array(
 	'include' => array(
 		'lib/custom/src',
 	),
-	'config' => array(
-	),
-	'setup' => array(
-	),
 );
