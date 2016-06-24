@@ -2,7 +2,7 @@
 	"name": "aimeos/ai-zend",
 	"description": "Zend Framework adapter for Aimeos web shops and e-commerce solutions",
 	"keywords": ["aimeos", "adapter", "zend", "framework", "shop", "e-commerce"],
-	"homepage": "https://aimeos.org",
+	"homepage": "https://aimeos.org/",
 	"type": "aimeos-extension",
 	"license": "LGPL-3.0",
 	"support": {
