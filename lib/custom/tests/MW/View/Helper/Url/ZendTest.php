@@ -31,7 +31,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		}
 
 		$view = new \Aimeos\MW\View\Standard();
-		$this->router = $this->getMock( 'Zend_Controller_Router_Rewrite' );
+		$this->router = $this->getMockBuilder( 'Zend_Controller_Router_Rewrite' )->getMock();
 
 		$this->object = new \Aimeos\MW\View\Helper\Url\Zend( $view, $this->router, 'https://localhost:80' );
 	}
