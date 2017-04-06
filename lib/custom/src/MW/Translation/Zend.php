@@ -24,7 +24,7 @@ class Zend
 {
 	private $options;
 	private $translationSources;
-	private $translations = array();
+	private $translations = [];
 
 
 	/**
@@ -40,7 +40,7 @@ class Zend
 	 *
 	 * @link http://framework.zend.com/manual/1.11/en/zend.translate.adapter.html
 	 */
-	public function __construct( array $translationSources, $adapter, $locale, array $options = array() )
+	public function __construct( array $translationSources, $adapter, $locale, array $options = [] )
 	{
 		parent::__construct( $locale );
 
@@ -117,7 +117,7 @@ class Zend
 	 */
 	public function getAll( $domain )
 	{
-		$messages = array();
+		$messages = [];
 
 		foreach( $this->getTranslations( $domain ) as $object ) {
 			$messages = $messages + $object->getMessages();
@@ -155,6 +155,6 @@ class Zend
 			}
 		}
 
-		return ( isset( $this->translations[$domain] ) ? $this->translations[$domain] : array() );
+		return ( isset( $this->translations[$domain] ) ? $this->translations[$domain] : [] );
 	}
 }

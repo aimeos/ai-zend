@@ -26,7 +26,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 
 		for( $i = 0; $i < 1000; $i++ )
 		{
-			$conf = new \Aimeos\MW\Config\Zend( new \Zend_Config( array(), true ), $paths );
+			$conf = new \Aimeos\MW\Config\Zend( new \Zend_Config( [], true ), $paths );
 
 			$conf->get( 'test/db/host' );
 			$conf->get( 'test/db/username' );

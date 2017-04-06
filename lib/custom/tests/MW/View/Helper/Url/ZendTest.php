@@ -82,7 +82,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 		$this->router->expects( $this->once() )->method( 'assemble' )
 			->will( $this->returnValue( 'testurl' ) );
 
-		$this->assertEquals( 'testurl', $this->object->transform( null, null, null, array(), array( 'a', 'b' ) ) );
+		$this->assertEquals( 'testurl', $this->object->transform( null, null, null, [], array( 'a', 'b' ) ) );
 	}
 
 
@@ -92,7 +92,7 @@ class ZendTest extends \PHPUnit_Framework_TestCase
 			->will( $this->returnValue( '/testurl' ) );
 
 		$options = array( 'absoluteUri' => true );
-		$result = $this->object->transform( null, null, null, array(), array(), $options );
+		$result = $this->object->transform( null, null, null, [], [], $options );
 		$this->assertEquals( 'https://localhost:80/testurl', $result );
 	}
 }

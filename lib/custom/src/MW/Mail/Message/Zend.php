@@ -21,7 +21,7 @@ namespace Aimeos\MW\Mail\Message;
 class Zend implements \Aimeos\MW\Mail\Message\Iface
 {
 	private $object;
-	private $embedded = array();
+	private $embedded = [];
 	private $html;
 
 
@@ -231,7 +231,7 @@ class Zend implements \Aimeos\MW\Mail\Message\Iface
 	{
 		if( !empty( $this->embedded ) )
 		{
-			$parts = array();
+			$parts = [];
 
 			if( $this->html != null )
 			{
