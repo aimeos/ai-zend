@@ -13,7 +13,7 @@ namespace Aimeos\MW\Config;
 /**
  * Test class for \Aimeos\MW\Config\Zend.
  */
-class ZendTest extends \PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit\Framework\TestCase
 {
 	private $object;
 

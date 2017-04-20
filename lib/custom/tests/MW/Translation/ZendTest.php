@@ -13,7 +13,7 @@ namespace Aimeos\MW\Translation;
 /**
  * Test class for \Aimeos\MW\Translation\ZendTest.
  */
-class ZendTest extends \PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit\Framework\TestCase
 {
 	/**
 	 * @var \Aimeos\MW\Translation\Zend

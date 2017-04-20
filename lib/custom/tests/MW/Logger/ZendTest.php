@@ -13,7 +13,7 @@ namespace Aimeos\MW\Logger;
 /**
  * Test class for \Aimeos\MW\Logger\Zend.
  */
-class ZendTest extends \PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit\Framework\TestCase
 {
 	private $object;
 

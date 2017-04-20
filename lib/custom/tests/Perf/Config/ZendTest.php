@@ -8,7 +8,7 @@ namespace Aimeos\Perf\Config;
  * @copyright Metaways Infosystems GmbH, 2013
  * @copyright Aimeos (aimeos.org), 2014-2016
  */
-class ZendTest extends \PHPUnit_Framework_TestCase
+class ZendTest extends \PHPUnit\Framework\TestCase
 {
 	public function testZend()
 	{
