@@ -20,3 +20,8 @@ script: vendor/bin/phing -Ddir=ext/ai-zend -Dzenddir=`pwd`/../zendlib/library co
 
 after_success:
   - php vendor/bin/coveralls -c ext/ai-zend/.coveralls.yml
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
